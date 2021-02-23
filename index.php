@@ -13,7 +13,7 @@
  * 2. A l'aide de PHP
  * ==> Créez une nouvelle base de données intro_sql
  * ==> Tentez de la supprimer depuis PHP
- * ==> Créez la à nouveau car nus en aurons besoin pour l'exo suivant !
+ * ==> Créez la à nouveau car nous en aurons besoin pour l'exo suivant !
  * Théorie :
  * -----------
  * En SQL, l'instruction DROP DATABASE nom_de_ma_table permet de supprimer une base de données.
@@ -22,23 +22,55 @@
 
 // TODO Votre code ici bas.
 
+$server = "localhost";
+$user = "root";
+$pwd = "";
+$db = "intro_sql";
+
 try {
-    $maConnexion = ........
+    $maConnexion = new PDO("mysql:host=$server;dname=$db", $user, $pwd);
 
     $request = "
         Ma super requête SQL pour créer une base de données.
     ";
 
-    $maConnexion->une super méthode pour exécuter ma requete
+    $maConnexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     echo "La base de données intro_sql a bien été créée.";
+
+    $sql = "CREATE DATABASE intro_sql";
+    $maConnexion->exec($sql);
+
+    //permet de supprimer la base de donner
+    $sql2 = "DROP DATABASE intro_sql";
+    $maConnexion->exec($sql2);
+
+    echo 'Base de données bien supprimée';
+
 }
 catch (PDOException $exception) {
     echo $exception->getMessage();
 }
 
 
+try {
+    $maConnexion = new PDO("mysql:host=$server;dname=$db", $user, $pwd);
 
+    $request = "
+        Ma super requête SQL pour créer une base de données.
+    ";
+
+    $maConnexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    echo "La base de données intro_sql a bien été créée.";
+
+    $sql = "CREATE DATABASE intro_sql";
+    $maConnexion->exec($sql);
+
+}
+catch (PDOException $exception) {
+    echo $exception->getMessage();
+}
 
 
 
