@@ -28,7 +28,7 @@ $pwd = "";
 $db = "intro_sql";
 
 try {
-    $maConnexion = new PDO("mysql:host=$server;dname=$db", $user, $pwd);
+    $maConnexion = new PDO("mysql:host=$server;dbname=$db;charset=utf8", $user, $pwd);
 
     $request = "
         Ma super requête SQL pour créer une base de données.
@@ -54,7 +54,7 @@ catch (PDOException $exception) {
 
 
 try {
-    $maConnexion = new PDO("mysql:host=$server;dname=$db", $user, $pwd);
+    $maConnexion = new PDO("mysql:host=$server;dbname=$db;charset=utf8", $user, $pwd);
 
     $request = "
         Ma super requête SQL pour créer une base de données.
